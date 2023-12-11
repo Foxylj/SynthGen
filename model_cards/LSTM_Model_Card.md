@@ -48,7 +48,8 @@
 - **Model Updates**: 
   - Future updates will focus on improving convergence and reducing MSE loss. Alternatives to MSE as a loss function may be explored.
 - **Contact Information**: 
-  - For inquiries or feedback, please contact Haosong Liu at haosongl@usc.edu.
+  - For inquiries or feedback, please contact Haosong Liu at haosongl@usc.edu
+  - Or Questions and comments about SynthGen can be sent via the [GitHub repository](https://github.com/Foxylj/SynthGen) of the project, or by opening an issue.
 
 ## Caveats and Recommendations
 - **Best Practices**: 

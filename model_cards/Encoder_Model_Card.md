@@ -48,7 +48,8 @@
 - **Model Updates**: 
   - Future development may explore alternative loss functions, such as perceptual loss, to overcome current limitations.
 - **Contact Information**: 
-  - For further information or feedback, please contact Haosong Liu at haosongl@usc.edu.
+  - For further information or feedback, please contact Haosong Liu at haosongl@usc.edu
+  - Or Questions and comments about SynthGen can be sent via the [GitHub repository](https://github.com/Foxylj/SynthGen) of the project, or by opening an issue.
 
 ## Caveats and Recommendations
 - **Best Practices**: 
