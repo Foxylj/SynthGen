@@ -146,13 +146,15 @@ def train(model_name="facebook/musicgen-melody",
           batch_size=3,
           use_scaler=True,
           save_models=True,
-          use_preprocessed_dataset=True):
+          use_preprocessed_dataset=True,
+          load_prev_model=True):
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     utils.set_seed(seed=seed,device=device)
 
     model = MusicGen.get_pretrained(model_name)
+    if load_prev_model: model.lm.load_state_dict(torch.load("./checkpoint/SynthGen_checkpoint.pth")["lm_model_state_dict"])
     model.lm = model.lm.to(torch.float32)
 
     if use_preprocessed_dataset:
@@ -171,7 +173,6 @@ def train(model_name="facebook/musicgen-melody",
         weight_decay=1e-6,
     )
     epoch_loss=[]
-    #torch.cuda.empty_cache()
     for epoch in range(epochs):
         model.lm.train()
         sum_loss=0
@@ -222,11 +223,6 @@ def train(model_name="facebook/musicgen-melody",
         epoch_loss.append(sum_loss/len(dataloader_train))
         if save_models and (min(epoch_loss)==epoch_loss[-1]): save_checkpoint(model,epoch,epoch_loss)
         if epoch%2==0: print(f"Epoch [{epoch+1}/{epochs}], Loss: {sum_loss/len(dataloader_train)}")
-
-    """for idx, one_wav in enumerate(pred):
-                # Will save under {idx}.wav, with loudness normalization at -14 db LUFS.
-                audio_write('outcome/electro_1_from_triner', one_wav.cpu(), model.sample_rate, strategy="loudness", loudness_compressor=True)"""
-
 
 
 if __name__ == "__main__":
